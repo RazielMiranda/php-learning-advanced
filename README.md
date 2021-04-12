@@ -37,5 +37,13 @@
 
 # Conceitos NameSpace
 
-    - ...
+    - NameSpaces servem para separar a sua aplicação em areas de nomes
+    - evita conflitos de codigo com funções que ja existem em partes da aplicação ou do proprio PHP
+    - com o namespace voce define o escopo do codigo do arquivo, separando ele, para ser acessado dinamicamente
+    - se a função tiver o mesmo nome não tem problema, se o namespace for diferente
 
+    - é possivel criar alias para o namespace deixando assim mais fácil de chamar os metodos pertencentes a ele
+    - namepsaces tem estruturas de pastas e são acessados relativamente ou dinamicamente
+        - ...
+        - ...
+    - o namespace tem que ser o primeiro comando do arquivo
