@@ -54,9 +54,8 @@ echo \contexto\soma(4,222);
 //! Como não conflitar com as API do php
 //! aqui vai pegar do namespace contexto ou seja a função que crieei
 function strpos($a, $b){return "string {$a} buscar {$b}";}
-echo strpos('abc', 'b');
+echo "<hr>" .  strpos('abc', 'b');
 
 //! assim chama a api do PHP pois está com a barra na frente isso leva ao namespace raiz da aplicação
-echo \strpos('abc', 'b');
-
+echo "<hr>" .  \strpos('abc', 'c');
 
