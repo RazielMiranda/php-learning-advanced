@@ -44,6 +44,6 @@
 
     - é possivel criar alias para o namespace deixando assim mais fácil de chamar os metodos pertencentes a ele
     - namepsaces tem estruturas de pastas e são acessados relativamente ou dinamicamente
-        - ...
-        - ...
     - o namespace tem que ser o primeiro comando do arquivo
+    - Após o namespace é necessario incluir o arquivo com os comando pertencentes a ele
+        - obs: o correto é usar autoload seguindo a PSR-4
