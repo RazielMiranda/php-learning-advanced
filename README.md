@@ -19,3 +19,13 @@
 
     - o bloco finally sempre será executado independete do que acontecer se antes
     tiver caido no catch ou no try
+
+#### Erros Personalizados
+
+    - No tratamento de erros personalizados é criado uma classe que extende de exception
+    - dentro dessa classe haverá alguns parametros que serão passsados a exception
+    - a logica:
+        - criar a função que deseja
+        - dentro da função tratar os erros de acordo com as regras de negocio
+    - Basicamente serve pra denifir um nome diferente de Exception na hora de instanciar o catch
+    deixando assim mais limpo o codigo
