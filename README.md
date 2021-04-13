@@ -29,3 +29,29 @@
         - dentro da função tratar os erros de acordo com as regras de negocio
     - Basicamente serve pra denifir um nome diferente de Exception na hora de instanciar o catch
     deixando assim mais limpo o codigo
+
+#### Error Handler
+
+    - Pesronalizar o error hanclder do php:
+
+        ini_set('display_errors', 1);
+        echo 4 / 0;
+
+        error_reporting(E_ERROR);
+        error_reporting(E_ALL);
+        error_reporting(~E_ALL);
+
+        error_reporting(E_ALL);
+        echo 4 / 0;
+        include 'ARQUI';
+
+        function filtrar($errno, $errstring){
+            $text = 'include';
+            return !!stripos("$errstring", $text);
+        }
+        set_error_handler('filtrarMensagem', E_WARNING);
+
+        echo 4 / 0;
+        include 'ARQUI';
+
+        restore_error_handler();
