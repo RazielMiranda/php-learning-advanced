@@ -1,12 +1,20 @@
-# GUZZLE HTTP CLIENT
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
-1 - instalar guzzle composer require 
-    - guzzlehttp/guzzle
+<h1>GUZZLE HTTP CLIENT</h1>
+<hr>
 
-2 - Precisar inserir a URL que quer fazer o request pode ser via form ou uma variavel com ela passando
-
-3 - codigo:
-
+<form method="post">
+    <input type="text" name="feed_url"></input>
+    <button type="submit">FETCH</button>
+</form>
 <?php
     // phpinfo();
     // exit;
@@ -47,5 +55,6 @@
         }
     }
 ?>
-
-#### TUTORIAL 1 : https://www.youtube.com/watch?v=kKppYrHbO3Y
+</form>
+</body>
+</html>
