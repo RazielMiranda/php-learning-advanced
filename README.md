@@ -2,6 +2,7 @@
 
 1 - instalar guzzle composer require 
     - guzzlehttp/guzzle
+    - é necessario estar configurado o certificado ssl no php
 
 2 - Precisar inserir a URL que quer fazer o request pode ser via form ou uma variavel com ela passando
 
