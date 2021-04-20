@@ -5,13 +5,13 @@
 session_start();
 echo session_id(); //! get or set
 
-//? salvando endereço de memoria da sessai
+//? salvando endereço de memoria da sessao
 $contador = &$_SESSION['contador'];
 $contador = $contador ? $contador + 1 : 1;
 echo '<br>' . $_SESSION['contador'];
 
 if($_SESSION['contador'] % 5 === 0){
-    //? É importante que regenere baseado em alguma regra de negocio. segunrança;
+    //? É importante que regenere baseado em alguma regra de negocio. segurança;
     session_regenerate_id();
 }
 
