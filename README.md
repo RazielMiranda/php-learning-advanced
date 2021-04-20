@@ -22,7 +22,10 @@
     $datafixa = mktime(15,39,32, 43, 1);
     echo strftime("%A DE %d %B %Y" , $datafixa );
 
-
+    - com o objeto datetime:
+        - formata
+        - seta o timezone
+        - pode passa strings ao contrutor
 
 ## ARQUIVOS
 
