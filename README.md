@@ -39,3 +39,8 @@
         if(!filter_var($_POST['filhos'], FILTER_VALIDATE_INT, $filhosConfig) && $_POST['filhos'] != 0){
             echo 'Filhos fora do padrão','<br>';
         }
+
+### Erros
+
+- salvar erros em um array
+- exibir com o invalid-feedback do boostrap
