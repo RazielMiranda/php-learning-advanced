@@ -1,5 +1,4 @@
-<h1> CRIAR CONEXÃO MYSQL OBJETO </h1>
-<hr>
+<?php
 
 //? Ideal é passar isso para um arrquivo a parte
 //? Setando o banco como parametro para caso queira mude depois
