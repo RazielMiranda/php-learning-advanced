@@ -4,17 +4,15 @@
 <?php
 require_once "conexao.php";
 
-$sql = "";
+$sql = "DELETE FROM cadastro WHERE id = 1";
 
+$conexao = novaConexao();
+$resultado = $conexao->query($sql);
 
+if($resultado){
+    echo "Sucesso";
+}else{
+    echo "Erro" . $conexao->error;
+}
 
-// $conexao = novaConexao();
-// $resultado = $conexao->query($sql);
-
-// if($resultado){
-//     echo "Sucesso";
-// }else{
-//     echo "Erro" . $conexao->error;
-// }
-
-// $conexao->close();
+$conexao->close();
