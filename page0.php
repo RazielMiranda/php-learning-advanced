@@ -1,4 +1,4 @@
-<h1> CRIAR CONEXÃO MYSQL OBJETO </h1>
+<h1> CRIAR CONEXÃO MYSQL PDO </h1>
 <hr>
 
 //? Ideal é passar isso para um arrquivo a parte
