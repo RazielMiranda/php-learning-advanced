@@ -1,6 +1,12 @@
-<h1> FORM INSERT </H1><hr>
+<h1> FORM UPDATE </H1><hr>
 
 <?php
+require_once 'conexao.php';
+$conexao = novaConexao();
+
+
+
+
 if(count($_POST) > 0){
     $dados = $_POST;
     $erros = [];
@@ -47,13 +53,11 @@ if(count($_POST) > 0){
     }
 
     if(!count($erros)){
-        require_once 'conexao.php';
 
         $sql = "INSERT INTO cadastro
         (nome, nascimento, email, site, filhos, salario)
         VALUES (? , ? , ? , ? , ? , ?);";
 
-        $conexao = novaConexao();
         $stmt = $conexao->prepare($sql);
 
         $params = [
