@@ -4,7 +4,23 @@
 require_once 'conexao.php';
 $conexao = novaConexao();
 
+if($_GET['codigo']){
+    $sql = "SELECT * FROM cadastro WHERE id = ?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param('i', $_GET['codigo']);
 
+    if($stmt->execute()){
+        $resultado = $stmt->get_result();
+        if($resultado->num_rows > 0){
+            $dados = $resultado->fetch_assoc();
+            // if($dados['nascimento']){
+            //     $dt = new DateTime($dados['nascimento']);
+            //     $dados['nascimento'] = $dt->format('m-d-Y');
+            // }
+        }
+    }
+
+}
 
 
 if(count($_POST) > 0){
@@ -54,9 +70,9 @@ if(count($_POST) > 0){
 
     if(!count($erros)){
 
-        $sql = "INSERT INTO cadastro
-        (nome, nascimento, email, site, filhos, salario)
-        VALUES (? , ? , ? , ? , ? , ?);";
+        $sql = "UPDATE cadastro
+        SET nome = ?, nascimento = ?, email = ?, site = ?, filhos = ?, salario = ?
+        WHERE id = ?;";
 
         $stmt = $conexao->prepare($sql);
 
@@ -66,38 +82,51 @@ if(count($_POST) > 0){
             $dados['email'],
             $dados['site'],
             $dados['filhos'],
-            $dados['salario'],
+            $dados['salario'] ? str_replace(".", "," , $dados['salario']) : null,
+            $dados['id'],
         ];
 
-        $stmt->bind_param("ssssid", ...$params);
+        $stmt->bind_param("ssssidi", ...$params);
+
+        if($stmt->execute()){
+            if(!$_GET['codigo']){
+                unset($dados);
+            }
+        }    
+
     }
 
-    if($stmt->execute()){
-        unset($dados);
-    }
 
 }
 ?>
 
-<form action="#" method="post">
+
+<form method="GET">
+    <input type="number" name="codigo" value="<?= $_GET['codigo']?>">
+    <input type="submit" value="Consultar">
+</form>
+
+
+<form action="?codigo=<?=$dados['id']?>" method="POST">
+    <input type="hidden" name="id" value="<?=$dados['id']?>">
 
     <label for="nome">Nome</label>
-    <input value="" type="text" name="nome" id="nome">
+    <input value="<?=$dados['nome']?>" type="text" name="nome" id="nome">
 
     <label for="nascimento">nascimento</label>
-    <input value="" type="date" name="nascimento" id="nascimento">
+    <input value="<?=$dados['nascimento']?>" type="date" name="nascimento" id="nascimento">
 
     <label for="filhos">filhos</label>
-    <input value="" type="number" name="filhos" id="filhos">
+    <input value="<?=$dados['filhos']?>" type="number" name="filhos" id="filhos">
 
     <label for="email">email</label>
-    <input value="" type="email" name="email" id="email">
+    <input value="<?=$dados['email']?>" type="email" name="email" id="email">
 
     <label for="site">site</label>
-    <input value="" type="text" name="site" id="site">
+    <input value="<?=$dados['site']?>" type="text" name="site" id="site">
 
     <label for="salario">salario</label>
-    <input value="" type="text" name="salario" id="salario">
+    <input value="<?=$dados['salario']?>" type="text" name="salario" id="salario">
 
     <input type="submit" value="submit" id="submit">
 
