@@ -69,7 +69,7 @@ class DatabaseConnection
     static public function insert(string $table, array $parameters): bool
     {
         $connection = self::connect();
-        $isInserted = false;
+        $is_inserted = false;
 
         $sql = sprintf(
             'INSERT INTO %s (%s) VALUES (%s)',
@@ -79,45 +79,56 @@ class DatabaseConnection
         );
 
         $stmt = $connection->prepare($sql);
-        $isInserted = $stmt->execute($parameters);
+        $is_inserted = $stmt->execute($parameters);
 
         $connection = null;
-        return $isInserted;
+        return $is_inserted;
     }
 
     static public function update(string $table, array $parameters, int $id): bool
     {
         $connection = self::connect();
-        $isInserted = false;
+        $is_updated = false;
+        $parametersKeys = array_keys($parameters);
+
+        foreach ($parametersKeys as $field) $fieldsToUpdate[] = $field . ' = ' . ':' . $field;
 
         $sql = sprintf(
-            'UPDATE %s (%s) SET (%s = %s) WHERE id = %d',
+            'UPDATE %s SET %s WHERE (id = %d)',
             $table,
-            implode(', ', array_keys($parameters)),
-            implode(' = ', array_keys($parameters)),
-            ':' . implode(', :', array_keys($parameters)),
+            implode(', ', array_values($fieldsToUpdate)),
             $id
         );
-        var_dump($sql);
-        exit;
-        $stmt = $connection->prepare($sql);
-        $isInserted = $stmt->execute($parameters);
 
+        $stmt = $connection->prepare($sql);
+        $is_updated = $stmt->execute($parameters);
         $connection = null;
-        return $isInserted;
+        return $is_updated;
     }
 
+    static public function delete(string $table, int $id): bool
+    {
+        $is_deleted = false;
+        $connection = self::connect();
+        $sql = "DELETE FROM {$table} WHERE id = :id;";
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $is_deleted = $stmt->execute();
+        $connection = null;
+        return $is_deleted;
+    }
 }
 
 // var_dump(DatabaseConnection::selectAll('cadastro'));
 // var_dump(DatabaseConnection::selectOne('cadastro', 1));
 // var_dump(DatabaseConnection::selectPagination('cadastro', 10, 1));
-$data = [
-    'nome' => 'Teste atualizado',
-    'email' => 'site@gmail.com',
-    'nascimento' => '1999-01-01',
-    'site' => 'http://site.com',
-    'filhos' => 0,
-    'salario' => 1250
-];
-var_dump(DatabaseConnection::update('cadastro', $data, 32));
+// $data = [
+//     'nome' => 'Teste atualizado novamente',
+//     'nascimento' => '1999-01-01',
+//     'email' => 'site@gmail.com',
+//     'site' => 'http://site.com',
+//     'filhos' => 0,
+//     'salario' => 1250,
+// ];
+// var_dump(DatabaseConnection::update('cadastro', $data, 37));
+// var_dump(DatabaseConnection::delete('cadastro', 25));
