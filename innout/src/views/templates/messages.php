@@ -1,6 +1,6 @@
 <?php
 
-if ($exception) {
+if ($exception ) {
     $message = [
         'type' => 'error',
         'message' => $exception->getMessage()
@@ -9,7 +9,7 @@ if ($exception) {
 
 ?>
 
-<?php if ($message) : ?>
+<?php if (!empty($message)) : ?>
     <div class="my-3 alert alert-danger" role="alert">
         <?= $message['message'] ?>
     </div>

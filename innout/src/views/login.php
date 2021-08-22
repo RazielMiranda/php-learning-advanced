@@ -15,9 +15,9 @@
         <div class="card login-card">
             <div class="card-header">
                 <i class="icofont-travelling"></i>
-                <span class="font-weight-light mr-2">In </span>
+                <span class="font-weight-light ml-2">In </span>
                 <span class="font-weight-bold mx-2">N' </span>
-                <span class="font-weight-light ml-2">Out </span>
+                <span class="font-weight-light mr-2">Out </span>
                 <i class="icofont-runner-alt-1"></i>
             </div>
             <div class="card-body">
@@ -31,8 +31,8 @@
                         placeholder="Informe o e-mail" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="senha">Senha</label>
-                    <input type="senha" name="senha" id="senha"
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" id="password"
                         class="form-control"
                         placeholder="Informe a senha">
                 </div>
