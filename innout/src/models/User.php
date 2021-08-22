@@ -4,7 +4,7 @@
 
     class User extends Model
     {
-        protected static $tableName = '';
+        protected static $tableName = 'users';
         protected static $columns = [
             'id',
             'name',
