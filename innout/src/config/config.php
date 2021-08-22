@@ -11,5 +11,5 @@ define('CONTROLLER_PATH', realpath(dirname(__FILE__) . '/../controllers'));
 // Arquivos importates
 require_once(realpath(dirname(__FILE__) . '/database.php'));
 
-//Objetivo dessa classe é guardar as regras de negocio
+//Objetivo dessa classe é guardar as regras de negocio "autoload"
 require_once(MODEL_PATH . '/Model.php');
