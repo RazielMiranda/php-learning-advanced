@@ -17,3 +17,4 @@ require_once(realpath(dirname(__FILE__) . '/loader.php'));
 //Objetivo dessa classe é guardar as regras de negocio "autoload"
 require_once(MODEL_PATH . '/Model.php');
 require_once(EXCPETION_PATH . '/AppException.php');
+require_once(EXCPETION_PATH . '/ValidationException.php');
