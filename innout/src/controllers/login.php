@@ -12,4 +12,4 @@ if (count($_POST) > 0) {
     }
 }
 
-loadView('login', $_POST + ['exception' => $exception]);
+loadTemplateView('login', $_POST + ['exception' => $exception]);
