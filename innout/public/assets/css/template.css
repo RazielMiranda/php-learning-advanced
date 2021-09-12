@@ -139,5 +139,12 @@ main.content{
 }
 
 footer.footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+    font-size: 1.2rem;
+    background-color: #222;
+    color: white;
     grid-area: footer;
 }
