@@ -134,6 +134,37 @@ body.hide-sidebar aside.sidebar{
     display: none;
 }
 
+aside.sidebar .sidebar-widgets{
+    position: sticky;
+    bottom: 10px;
+}
+
+aside.sidebar .sidebar-widget{
+    display: flex;
+    align-items: center;
+}
+
+aside.sidebar .sidebar-widget .icon{
+    font-size: 3.5rem;
+    margin:  2px 10px 2px 0px;
+}
+
+aside.sidebar .sidebar-widget .info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.division{
+    widows: 80%;
+    border: solid 1px whitesmoke;
+}
+
+aside.sidebar .sidebar-widget .info .main{
+    font-size: 2rem;
+}
+
 main.content{
     grid-area: content;
 }

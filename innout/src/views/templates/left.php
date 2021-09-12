@@ -27,4 +27,31 @@
             </li>
         </ul>
     </nav>
+
+    <div class="sidebar-widgets">
+        <div class="sidebar-widget">
+            <i class="icon icofont-hour-glass text-primary"></i>
+            <div class="info">
+                <span class="main text-primary">
+                    4:23
+                </span>
+                <span class="text-muted">
+                    Horas trabalhadas
+                </span>
+            </div>
+        </div>
+        <div class="division my-3"></div>
+        <div class="sidebar-widget">
+            <i class="icon icofont-ui-alarm text-danger"></i>
+            <div class="info">
+                <span class="main text-danger">
+                    18:00
+                </span>
+                <span class="text-muted">
+                    Horas de Saída
+                </span>
+            </div>
+        </div>
+    </div>
+
 </aside>
