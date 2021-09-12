@@ -47,6 +47,54 @@ header.header .menu-toggle{
     cursor: pointer;
 }
 
+header.header .spacer{
+    flex: 1;
+}
+
+header.header .dropdown-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    cursor: pointer;
+}
+
+header.header .dropdown-content{
+    display: none;
+    justify-content: center;
+    position: absolute;
+    min-width: 100%;
+    background-color: #f9f9f9;
+    padding: 10px 0px;
+    z-index: 100;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, .2);
+}
+
+header.header .dropdown:hover .dropdown-content{
+    display: block;
+}
+
+header.header .dropdown-content ul{
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+header.header .dropdown-content a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #222;
+    padding: 7px;
+    font-size: 1rem;
+}
+
+header.header .dropdown:hover{
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, .05);
+}
+
 aside.sidebar{
     grid-area: sidebar;
 }
