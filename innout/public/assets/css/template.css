@@ -166,8 +166,12 @@ aside.sidebar .sidebar-widget .info .main{
 }
 
 main.content{
+    background-color: white ;
     grid-area: content;
+    margin: 20px;
 }
+
+
 
 footer.footer{
     display: flex;
