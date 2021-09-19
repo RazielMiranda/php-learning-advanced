@@ -169,9 +169,16 @@ main.content{
     background-color: white ;
     grid-area: content;
     margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .2);
 }
 
-
+main.content .content-title{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
 
 footer.footer{
     display: flex;
