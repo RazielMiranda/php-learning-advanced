@@ -95,6 +95,13 @@ header.header .dropdown:hover{
     background-color: rgba(0, 0, 0, .05);
 }
 
+header.header .avatar{
+    width: 30%;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+
 aside.sidebar{
     display: flex;
     flex-direction: column;
