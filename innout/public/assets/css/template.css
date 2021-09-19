@@ -177,7 +177,25 @@ main.content{
 main.content .content-title{
     display: flex;
     align-items: center;
+    padding-bottom: 15px;
     border-bottom: 1px solid #ccc;
+}
+
+main.content .content-title .icon{
+    font-size: 3rem;
+}
+
+main.content .content-title h1{
+    color: #444;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin: 0;
+}
+
+main.content .content-title h2{
+    color: #888;
+    font-size: 1.2rem;
+    font-weight: 300;
 }
 
 footer.footer{
@@ -189,4 +207,8 @@ footer.footer{
     background-color: #222;
     color: white;
     grid-area: footer;
+}
+
+.record{
+    font-size: 1.2rem;
 }
