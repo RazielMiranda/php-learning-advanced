@@ -71,7 +71,7 @@ class Model
         $sql = "INSERT INTO " . static::$tableName . "("
                 . implode("," , static::$columns) . ") VALUES (";
         foreach (static::$columns as $col) {
-            $sql .= static::getFormattedValue($this->col) . "," ;
+            $sql .= static::getFormattedValue($this->$col) . "," ;
         }
         $sql[strlen($sql) - 1] = ")" ;
         $id = Database::executeSQL($sql);
