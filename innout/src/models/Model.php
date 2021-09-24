@@ -67,7 +67,7 @@ class Model
         }
     }
 
-    public function save(){
+    public function insert(){
         $sql = "INSERT INTO " . static::$tableName . "("
                 . implode("," , static::$columns) . ") VALUES (";
         foreach (static::$columns as $col) {
@@ -76,6 +76,17 @@ class Model
         $sql[strlen($sql) - 1] = ")" ;
         $id = Database::executeSQL($sql);
         $this->id = $id;
+    }
+
+    public function update()
+    {
+        $sql = "UPDATE " . static::$tableName . " SET ";
+        foreach (static::$columns as $col) {
+            $sql .= " ${col} = " . static::getFormattedValue($this->$col) . "," ;
+        }
+        $sql[strlen($sql) - 1] = " " ;
+        $sql .= "WHERE id = {$this->id}";
+        Database::executeSQL($sql);
     }
 
     private static function getFilters($filters)
