@@ -53,6 +53,7 @@ class WorkingHours extends Model
             throw new AppException("Voce já fez os 4 batimentos do dia!");
         }
         $this->$timeColumn = $time;
+        $this->worked_time = getSecondsFromDateInterval($this->getWorkedInterval());
         if($this->id){
             $this->update();
         }else{
@@ -95,6 +96,16 @@ class WorkingHours extends Model
         if($t4) $part2 = $t3->diff($t4);
 
         return sumIntervals($part1, $part2);
+    }
+
+    function getBalance(){
+        if(!$this->time1 && !isPastWorkday($this->work_date)) return '-';
+        if($this->worked_time == DAILY_TIME) return '-';
+        
+        $balance = $this->worked_time - DAILY_TIME;
+        $balanceString = getTimeStringFromSeconds(abs($balance));
+        $sign = $this->worked_time >= DAILY_TIME ? '+' : '-';
+        return "{$sign}{$balanceString}";
     }
 
     public static function getMonthlyReport($userId, $date){

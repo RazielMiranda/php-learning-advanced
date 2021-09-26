@@ -53,3 +53,24 @@ function getLastDayOfMonth($date){
     return new DateTime(date('Y-m-t', $time));
 }
 
+function getSecondsFromDateInterval($interval){
+    $d1 = new DateTimeImmutable();
+    $d2 = $d1->add($interval);
+    return $d2->getTimestamp() - $d1->getTimestamp();
+}
+
+function isPastWorkday($date){
+    return !isWeekend($date) && isBefore($date, new DateTime());
+}
+
+function getTimeStringFromSeconds($seconds){
+    $h = intdiv($seconds, 3600);
+    $m = intdiv($seconds % 3600, 60);
+    $s = $seconds - ($h * 3600) - ($m * 60);
+    return sprintf('%02d:%02d:%02d', $h, $m, $s);
+}
+
+function formatDateWithLocale($date, $pattern){
+    $time = getDateAsDateTime($date)->getTimestamp();
+    return sprintf($pattern, $date);
+}
