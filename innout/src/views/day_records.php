@@ -16,12 +16,12 @@
 
         <div class="card-body">
             <div class="d-flex m-5 justify-content-around">
-                <span class="record">Entrada 1: <?=($records->time1 ?? '----')?></span>
-                <span class="record">Saida 1:  <?=($records->time2 ?? '----')?></span>
+                <span class="record">Entrada 1: <?=($workingHours->time1 ?? '----')?></span>
+                <span class="record">Saida 1:  <?=($workingHours->time2 ?? '----')?></span>
             </div>
             <div class="d-flex m-5 justify-content-around">
-                <span class="record">Entrada 2:  <?=($records->time3 ?? '----')?></span>
-                <span class="record">Saida 2:  <?=($records->time4 ?? '----')?></span>
+                <span class="record">Entrada 2:  <?=($workingHours->time3 ?? '----')?></span>
+                <span class="record">Saida 2:  <?=($workingHours->time4 ?? '----')?></span>
             </div>
         </div>
 
