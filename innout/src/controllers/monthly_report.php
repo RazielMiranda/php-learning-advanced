@@ -9,10 +9,10 @@ $selectedUserId = $user->id;
 $users = null;
 if($user->is_admin){
     $users = User::get();
-    $selectedUserId = $_POST['user'] ? $_POST['user'] : $user->id;
+    $selectedUserId = (!empty($_POST['user'])) ? $_POST['user'] : $user->id;
 }
 
-$selectedPeriod = $_POST['period'] ? $_POST['period'] : $currentDate->format('Y-m');
+$selectedPeriod = (!empty($_POST['period'])) ? $_POST['period'] : $currentDate->format('Y-m');
 $periods = [];
 
 for($yearDiff = 2; $yearDiff >= 0; $yearDiff--){
@@ -23,15 +23,15 @@ for($yearDiff = 2; $yearDiff >= 0; $yearDiff--){
     }
 }
 
-$registries = WorkingHours::getMonthlyReport($user->id, $currentDate);
+$registries = WorkingHours::getMonthlyReport($selectedUserId, $currentDate);
 
 $report = [];
 $workday = 0;
 $sumOfWorkedTime = 0;
-$lastDay = getLastDayOfMonth($selectedPeriod)->format('d');
+$lastDay = getLastDayOfMonth($currentDate)->format('d');
 
 for ($day = 1; $day < $lastDay; $day++) { 
-    $date = $selectedPeriod->format('Y-m') . '-' . sprintf('%02d', $day);
+    $date = $currentDate->format('Y-m') . '-' . sprintf('%02d', $day);
     $registry = $registries[$date];
 
     if (isPastWorkday($date)) $workday++;

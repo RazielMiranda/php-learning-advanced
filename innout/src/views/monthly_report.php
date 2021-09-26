@@ -10,20 +10,24 @@
 
     <form class="mb-4" action="#" method="post">
         <div class="input-group">
+            <?php if ($user->is_admin) { ?>
             <select name="user" class="form-control ml-1" placeholder="Selecione o usuario...">
                 <option value="">Selecione o usuario</option>
                 <?php
                     foreach ($users as $user) {
-                        echo "<option value='{$user->id}'>{$user->name}</option>";
+                        $selected = ($user->id === $selectedUserId) ? 'selected' : '';
+                        var_dump($selected);
+                        echo "<option value='{$user->id}' {$selected}>{$user->name}</option>";
                     }
                 ?>
             </select>
+            <?php } ?>
             <select name="period" class="form-control ml-2" placeholder="Selecione o periodo...">
                 <option value="">Selecione o periodo</option>
                 <?php
                     foreach ($periods as $key => $month) {
-                        $selected = $key === $selectedPeriod ? 'selected' : '';
-                        echo "<option value='{$key}'>{$month}</option>";
+                        $selected = ($key === $selectedPeriod) ? 'selected' : '';
+                        echo "<option value='{$key}' {$selected}>{$month}</option>";
                     }
                 ?>
             </select>
