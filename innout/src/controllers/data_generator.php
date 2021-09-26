@@ -58,9 +58,9 @@ function populateWorkingHours($userId, $initialDate, $regularRate, $extraRate, $
     }
 
 }
-// $lastDayMonth = strtotime('first day of last month');
-// populateWorkingHours(1, date('Y-m-L'), 70, 20, 10);
-// populateWorkingHours(3, date('Y-m-d', $lastDayMonth), 20, 75, 5);
-// populateWorkingHours(4, date('Y-m-d', $lastDayMonth), 20, 10, 70);
+$lastDayMonth = strtotime('first day of last month');
+populateWorkingHours(1, date('Y-m-L'), 70, 20, 10);
+populateWorkingHours(3, date('Y-m-d', $lastDayMonth), 20, 75, 5);
+populateWorkingHours(4, date('Y-m-d', $lastDayMonth), 20, 10, 70);
 
 echo 'Tudo Certo!';
