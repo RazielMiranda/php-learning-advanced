@@ -7,6 +7,32 @@
     );
 ?>
 <div>
+
+    <form class="mb-4" action="#" method="post">
+        <div class="input-group">
+            <select name="user" class="form-control ml-1" placeholder="Selecione o usuario...">
+                <option value="">Selecione o usuario</option>
+                <?php
+                    foreach ($users as $user) {
+                        echo "<option value='{$user->id}'>{$user->name}</option>";
+                    }
+                ?>
+            </select>
+            <select name="period" class="form-control ml-2" placeholder="Selecione o periodo...">
+                <option value="">Selecione o periodo</option>
+                <?php
+                    foreach ($periods as $key => $month) {
+                        $selected = $key === $selectedPeriod ? 'selected' : '';
+                        echo "<option value='{$key}'>{$month}</option>";
+                    }
+                ?>
+            </select>
+            <button class="btn btn-primary">
+                <i class="icofont-search"></i>
+            </button>
+        </div>
+    </form>
+
     <table class="table table-bordered table-striped table-hover">
         <thead>
             <th>Dia</th>

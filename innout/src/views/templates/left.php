@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="monthly_report.php">
+                <a href="data_generator.php">
                     <i class="icofont-chart-histogram mr-2"></i>
                     Relatório Gerencial
                 </a>
