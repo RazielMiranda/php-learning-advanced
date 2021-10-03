@@ -11,4 +11,4 @@ try {
     $exception = $e;
 }
 
-loadTemplateView('save_user', ['exception' => $exception]);
+loadTemplateView('save_user', $_POST + ['exception' => $exception]);
