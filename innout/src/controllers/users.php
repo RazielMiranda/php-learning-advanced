@@ -2,6 +2,16 @@
 session_start();
 requireValidSession();
 
+$exception = null;
+if (isset($_GET['delete'])) {
+    try {
+       User::deleteById($_GET['delete']);
+       addSuccesMsg("Usuario excluido com sucesso");
+    } catch (Exception $e) {
+        $exception = $e;
+    }
+}
+
 $users = User::get();
 
 foreach ($users as $user) {
@@ -12,4 +22,7 @@ foreach ($users as $user) {
 }
 
 
-loadTemplateView('users', ['users' => $users]);
+loadTemplateView('users', [
+    'users' => $users,
+    'excpetion' => $exception
+]);

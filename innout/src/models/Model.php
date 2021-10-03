@@ -9,18 +9,26 @@ class Model
     protected $values = [];
 
     //Se passa os dados que deseja manipular
-    public function __construct($arr)
+    public function __construct($arr, $sanitize = true)
     {
-        $this->loadFromArray($arr);
+        $this->loadFromArray($arr, $sanitize);
     }
 
     //TODO: pesquisar o que é o set e o get pra entender essa função
-    public function loadFromArray($arr)
+    public function loadFromArray($arr, $sanitize = true)
     {
         if ($arr) {
+            // $conn = Database::getConnection();
             foreach ($arr as $key => $value) {
-                $this->$key = $value;
+                $cleanValue = $value;
+                if ($sanitize && isset($cleanValue)) {
+                    $cleanValue = strip_tags(trim($cleanValue));
+                    $cleanValue = htmlentities($cleanValue, ENT_NOQUOTES);
+                    // $cleanValue = mysqli_real_escape_string($conn, $cleanValue);
+                }
+                $this->$key = $cleanValue;
             }
+            // $conn->close();
         }
     }
 
@@ -32,6 +40,11 @@ class Model
     public function __get($key)
     {
         return $this->values[$key];
+    }
+
+    public function getValues()
+    {
+        return $this->values;
     }
 
     public static function get($filters = [], $columns = '*')
@@ -95,6 +108,17 @@ class Model
             $filters, 'count(*) as count'
         );
         return $result->fetch_assoc()['count'];
+    }
+
+    public function delete()
+    {
+        static::deleteById($this->id);
+    }
+
+    public static function deleteById($id)
+    {
+        $sql = "DELETE FROM " . static::$tableName . " WHERE id ={$id}";
+        Database::executeSQL($sql);
     }
 
     private static function getFilters($filters)
