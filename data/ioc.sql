@@ -1,0 +1,6 @@
+CREATE TABLE status (
+	id INTEGER PRIMARY KEY,
+	status NVARCHAR(8) NOT NULL,
+	ticket_date NVARCHAR(20) NOT NULL,
+	ticket_num NVARCHAR(16) NOT NULL
+);

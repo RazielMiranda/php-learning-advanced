@@ -1,0 +1,12 @@
+{
+    "require" : {
+        "php" : ">=8.0",
+        "laminas/laminas-db": "^2.18",
+        "laminas/laminas-servicemanager": "^3.22"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "ObjectsAndDesign\\" : "src/ObjectsAndDesign"
+        }
+    }
+}

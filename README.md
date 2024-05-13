@@ -1,49 +1,71 @@
-# Conceitos Include
+# PHP Tutorial in 6 Steps
 
-    - se usa a função include()
-    - nao se pode incluir duas vezes o mesmo arquivo com as mesmas funções gera erro
-        - obs: é usando function_exists() no arquivo de include para evitar isso.
-    - a ideia é acessar funções e variaveis do arquivo que foi incluido
+Follow these instructions to create a Docker container that includes:
+* PHP 8.2
+* nginx web server
+* SQLite3 database
 
-    - Quando voce inclui um arquivo dentro de uma função o arquivo estará disponivel apenas dentro do espoco dela
-    - ou seja esse arquivo so será incluido quando a função for chamada e 
-    - também so será possivel acessar as funções do arquivo, variaveis não.
-    - as funções estarão disponiveis nas linhas abaixo do metodo que contem o include as variaveis não.
+## Install Docker
+Head over to the Docker website for installation instructions:
+* https://www.docker.com/get-started/
 
-##### Included vs Require
+## Build the container
+Before you can use
+1. Open a command prompt / terminal window
+2. Clone this repository:
+```
+git clone https://github.com/dbierer/php-6-steps-tutorial.git
+```
+  * If you don't have `git` installed, you can also do this:
+  * Download the ZIP file of this repository from here: https://github.com/dbierer/php-6-steps-tutorial/archive/refs/heads/main.zip
+  * Unzip into an appropriate folder on your computer
+3. Change to the directory (folder) that contains the cloned Github repository files
+4. Build the Docker container:
+```
+docker build -t php-6-steps .
+```
 
-    Included:
-        - caso tente incluir um arquivo que não existe apenas gera um warning
+## Run the container
+Use this command to run the container:
+```
+docker run -d -p 8888:80 -v `pwd`:/home/tutorial php-6-steps
+```
+You'll now need to run this command to get the name assigned to the container:
+```
+docker container ls
+```
+For this tutorial, we'll refer to the container name as `$NAME`
 
-    Require:
-        - caso tente incluir um arquivo que não existe gera um erro fatal
+## Shell into the container
+To open a command shell into the container run this command:
+```
+docker exec -it $NAME /bin/bash
+```
 
-    obs: é mais usado o require por questões de regras de inclusões.
+## Access the container from your browser
+To access the output from the nginx web server type this URL into your browser: `http://localhost:8888/`
+
+## Create a PHP program
+You can now create a PHP program that's visible from your browser.
+* Make sure that you are *not* shelled into the container!
+* You need to do this from your editor *outside* the Docker container
+
+Create a "hello_world" program:
+1. Open your code editor
+2. Enter this PHP code:
+```
+<?php
+echo 'Hello World!';
+```
+3. Save the file as `hello_world.php` in the directory that contains the files from the repository
+4. Test from your browser using this URL: `http://localhost:8888/tutorial/hello_world.php`
+
+## Stop the container
+If you are running on Windows or Mac, you can use the Docker Desktop to start or stop the container.
+
+Otherwise, from the command line, run this command, where `$NAME` is the name of the container
+```
+docker container stop $NAME
+```
 
 
-#### Returns em included
-
-    - as variaveis de um arquivo estao disponiveis globalmente (caso seja incluido fora do escopo de uma função)
-    - variaveis de retorno tambmém estão disponiveis (caso seja incluido fora do escopo de uma função)
-    - é possivel incluir com caminhos absolutos require(../pasta1/arquivo.php)
-        - pode ser usada a constante __DIR__ que representa o diretorio atual
-
-#### include_once e require_once
-
-    - Sempre que voce chama um arquivo as variaveis dele são reinicializadas isso usando include() ou require()
-    - usando o include_once() ou require_once() voce consegue amarrar apenas para uma chamada do arquivo ou seja
-    as variaveis e metodos não serão redefinidos assim como na outra chamada mesmo que seja incluido denovo o arquivo
-    - também não é necessario usar o function_exists() pois o PHP vai tratar disso
-
-# Conceitos NameSpace
-
-    - NameSpaces servem para separar a sua aplicação em areas de nomes
-    - evita conflitos de codigo com funções que ja existem em partes da aplicação ou do proprio PHP
-    - com o namespace voce define o escopo do codigo do arquivo, separando ele, para ser acessado dinamicamente
-    - se a função tiver o mesmo nome não tem problema, se o namespace for diferente
-
-    - é possivel criar alias para o namespace deixando assim mais fácil de chamar os metodos pertencentes a ele
-    - namepsaces tem estruturas de pastas e são acessados relativamente ou dinamicamente
-    - o namespace tem que ser o primeiro comando do arquivo
-    - Após o namespace é necessario incluir o arquivo com os comando pertencentes a ele
-        - obs: o correto é usar autoload seguindo a PSR-4
