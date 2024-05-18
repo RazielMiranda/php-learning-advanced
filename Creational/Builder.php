@@ -4,8 +4,9 @@ namespace Creational;
 
 class UserBuilder
 {
-    private int $id = 1;
-    private string $firstName = 'Raziel Rodrigues';
+    private int $id;
+    private string $firstName;
+
 
     public function setId(int $id): UserBuilder
     {
@@ -22,6 +23,14 @@ class UserBuilder
 
     public function build(): array
     {
-        return array($this->id, $this->firstName);
+        return array(
+            'id' => $this->id,
+            'first_name' => $this->firstName
+        );
     }
 }
+
+# $user = new UserBuilder;
+# $user->setId(1);
+# $user->setFirstName('Raziel Rodrigues');
+# print_r($user->build());

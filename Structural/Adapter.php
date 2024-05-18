@@ -2,6 +2,10 @@
 
 namespace Structural;
 
+# echo PHP_EOL;
+# echo '== Adapter ==';
+# echo PHP_EOL;
+
 interface EmailService
 {
     public function send(string $to, string $subject, string $body): string;
@@ -42,5 +46,5 @@ class EmailServiceAdapter
 $adapater = new EmailServiceAdapter(new GoogleEmailService());
 $adapter2 = new EmailServiceAdapter(new MicrosoftEmailService());
 
-echo $adapater->send('a@a.com', 'subject', 'body');
-echo $adapter2->send('a@a.com', 'subject', 'body');
+# echo $adapater->send('a@a.com', 'subject', 'body');
+# echo $adapter2->send('a@a.com', 'subject', 'body');
