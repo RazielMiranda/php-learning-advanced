@@ -12,4 +12,8 @@ The course is for free and you can also enroll <a href='https://training.zend.co
 
 Plus you get a nice certificate like this one :)
 
-<img src='certificate.png'>
+<img src='certificate.png'> 
+
+git push git@github.com:RazielRodrigues/php-design-patterns-zend.git +new-project:master +site3a:rails3
+
+git remote add repoRemote https://bitbucket/repo/repo1.git
